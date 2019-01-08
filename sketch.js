@@ -16,7 +16,7 @@ function setup() {
 	gui = createGraphics(w, h);
 
 	
-	//modifiers.push(new MirrorModifier(10, createVector(width*0.1, height*0.1), 0.25));
+	modifiers.push(new MirrorModifier(10, createVector(width*0.1, height*0.1), 0.25));
 	var tile = new TileModifier(100, 100);
 	var mirror = new MirrorModifier(4, createVector(width*0.25, height*0.25), 0.25);
 	modifiers.push(tile);
@@ -89,10 +89,18 @@ function mouseReleased() {
 			if(modifiers[i].active.value) modifiers[i].end();
 		}
 		isDrawing = false;
-		canvas.tint(255, globalAlpha);
+		//canvas.tint(255, globalAlpha);
 		canvas.image(drawing.get(), 0, 0);
 		canvas.noTint();
 	}
+}
+
+function keyPressed(){
+	if (keyCode === 80) {
+		saveCanvas();
+	}
+
+	
 }
 
 function Line(p1, p2){
